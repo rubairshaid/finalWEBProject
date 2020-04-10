@@ -23,7 +23,7 @@
 <?php
 require "connection.php"; 
 
-$query = "SELECT * FROM news WHERE Published=0  ORDER BY DatePosted DESC" ;
+$query = "SELECT * FROM news WHERE Published=0  ORDER BY DatePosted DESC LIMIT 9" ;
 $news = mysqli_query($conn , $query);
 $new = mysqli_fetch_assoc($news);
 ?>
@@ -56,9 +56,17 @@ $new = mysqli_fetch_assoc($news);
   <div class="container text-center">
   <?php
      $image = $new['Image'];
+     echo "<a href = 'contentPage.php?ID=".$new["ID"]."'>";
+     echo "<div>";
      echo " <img width = 80% height = 400px src=".$image ." class='img-fluid' alt='Responsive image'>";
+     echo "<h2>".$new["Title"]."</h2>";
+     echo"</div>";
+     echo "</a>";
   ?>
+  
   </div>
+
+
 </div>
   <?php
   $row = 2; 
@@ -74,7 +82,7 @@ $new = mysqli_fetch_assoc($news);
      {
       $new = mysqli_fetch_assoc($news);
        echo '<div class="col-sm-3" >';
-       echo "<a href = ''>";
+       echo "<a href = 'contentPage.php?ID=".$new["ID"]."'>";
        echo "<div style = 'height : 300px ; border: 1px solid #ddd; padding: 3px;'>";
        echo "<div height = '250px'>";
        echo '<img  src='.$new['Image'] ." ".'class="img-responsive" style="width:100% ; height : 250px" alt="Image">';
