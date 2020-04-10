@@ -22,6 +22,10 @@
 <body>
 <?php
 require "connection.php"; 
+
+$query = "SELECT * FROM news WHERE Published=0  ORDER BY DatePosted DESC" ;
+$news = mysqli_query($conn , $query);
+$new = mysqli_fetch_assoc($news);
 ?>
 
 <nav class="navbar navbar-inverse">
@@ -50,28 +54,33 @@ require "connection.php";
 
 <div class="jumbotron">
   <div class="container text-center">
-    <img width = 80% height = 400px src="https://www.apple.com/newsroom/images/product/iphone/lifestyle/Apple_Shot-on-iPhone-Challenge-2020_Austin-Mann_01072020_big.jpg.large.jpg" class="img-fluid" alt="Responsive image">
+  <?php
+     $image = $new['Image'];
+     echo " <img width = 80% height = 400px src=".$image ." class='img-fluid' alt='Responsive image'>";
+  ?>
   </div>
 </div>
-  
+  <?php
+  $row = 2; 
+  $divs = 4; 
+  ?>
 <div class="container-fluid bg-3 text-center">    
-  <h3>Some of my Work</h3><br>
   <div class="row">
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
   </div>
 </div><br>
@@ -79,20 +88,20 @@ require "connection.php";
 <div class="container-fluid bg-3 text-center">    
   <div class="row">
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>    
+  </div>
+    <div class="col-sm-3"> 
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
       <p>Some text..</p>
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <p>Some text..</p>
     </div>
   </div>
 </div><br><br>
