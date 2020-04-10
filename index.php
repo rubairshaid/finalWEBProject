@@ -74,12 +74,14 @@ $new = mysqli_fetch_assoc($news);
      {
       $new = mysqli_fetch_assoc($news);
        echo '<div class="col-sm-3" >';
+       echo "<a href = ''>";
        echo "<div style = 'height : 300px ; border: 1px solid #ddd; padding: 3px;'>";
        echo "<div height = '250px'>";
        echo '<img  src='.$new['Image'] ." ".'class="img-responsive" style="width:100% ; height : 250px" alt="Image">';
        echo "</div>";
        echo  '<p>'.$new["Title"].'</p>';
        echo '</div>';
+       echo "</a>";
        echo '</div>'; 
        $divs--;
      }
