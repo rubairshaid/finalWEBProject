@@ -63,48 +63,33 @@ $new = mysqli_fetch_assoc($news);
   <?php
   $row = 2; 
   $divs = 4; 
-  ?>
-<div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-  </div>
-</div><br>
 
-<div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>    
-  </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Some text..</p>
-    </div>
-  </div>
-</div><br><br>
+  while ($row != 0)
+  {
+    
+    echo '<div class="container-fluid bg-3 text-center">';
+     echo ' <div class="row">';
+
+     while ($divs!=0 )
+     {
+      $new = mysqli_fetch_assoc($news);
+       echo '<div class="col-sm-3" >';
+       echo "<div style = 'height : 300px ; border: 1px solid #ddd; padding: 3px;'>";
+       echo "<div height = '250px'>";
+       echo '<img  src='.$new['Image'] ." ".'class="img-responsive" style="width:100% ; height : 250px" alt="Image">';
+       echo "</div>";
+       echo  '<p>'.$new["Title"].'</p>';
+       echo '</div>';
+       echo '</div>'; 
+       $divs--;
+     }
+    $row--;
+    $divs = 4;
+    echo '</div>';
+    echo '</div><br>';
+  }
+  ?>
+
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
