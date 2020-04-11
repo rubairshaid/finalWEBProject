@@ -1,3 +1,29 @@
+<?php
+    session_start();
+    require "connection.php";
+
+    if (!isset($_POST['username']) || !isset($_POST['pass']))
+    {
+        header("location:AdministratorLogIn.html");
+    }
+    
+    $Username = $_POST["username"];
+    $Pass = $_POST["pass"];
+    
+     $query = "SELECT * FROM administrator WHERE UserName='$Username' ";
+     $result = mysqli_query($conn , $query);
+     if(!$result)
+     {
+           header("location:AdministratorLogIn.html");
+     }
+    $user = mysqli_fetch_assoc($result);
+    if ($Pass != $user["Password"] )
+    {
+        header("location:AdministratorLogIn.html");
+    }
+    $_SESSION['username']= $Username;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +53,30 @@ $query = "SELECT * FROM news WHERE Published=0  ORDER BY DatePosted DESC LIMIT 9
 $news = mysqli_query($conn , $query);
 $new = mysqli_fetch_assoc($news);
 ?>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="AdministratorAddNewsA.php"> Add News Articles</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Authors accounts</a></li>
+        <li><a href="ASTable.php">Manage News Articles</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="jumbotron">
   <div class="container text-center">
